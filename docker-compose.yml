@@ -1,0 +1,50 @@
+version: '3.7'
+
+services:
+    mariadb:
+        build: ./mariaDB
+        image: mariadb
+        container_name: mariadb
+        ports:
+            - "3306:3306"
+        volumes:
+            - my-volume:/var
+        networks:
+            - my-network
+        restart: always
+
+
+    wordpress:
+        build: ./wordpress
+        image: wordpress
+        container_name: wordpress
+        ports:
+            - "9000:9000"
+        volumes:
+            - my-volume:/var
+        depends_on:
+            - mariadb
+        networks:
+            - my-network
+        restart: always
+
+    
+    nginx:
+        build: ./nginx
+        image: nginx
+        container_name: nginx
+        ports:
+            - "443:443"
+        volumes:
+            - my-volume:/var
+        depends_on:
+            - wordpress
+        networks:
+            - my-network
+        restart: always
+
+volumes:
+    my-volume:
+
+networks:
+    my-network:

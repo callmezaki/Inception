@@ -1,4 +1,12 @@
 FROM debian:buster
 
 
-RUN sudo apt-get update ; sudo apt-get install  mysql-server php php-mysql 
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y php-fpm php-mysqli curl
+
+COPY wp.sh .
+
+RUN chmod +x wp.sh
+
+CMD ["bash", "wp.sh"]
