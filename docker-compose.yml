@@ -23,6 +23,7 @@ services:
         volumes:
             - my-volume:/var
         depends_on:
+            - nginx
             - mariadb
         networks:
             - my-network
@@ -37,8 +38,6 @@ services:
             - "443:443"
         volumes:
             - my-volume:/var
-        depends_on:
-            - wordpress
         networks:
             - my-network
         restart: always
