@@ -3,10 +3,10 @@ FROM debian:buster
 
 RUN apt-get update -y && \
     apt-get upgrade -y && \
-    apt-get install -y php-fpm php-mysqli curl
+    apt-get install -y php php-fpm php-mysql curl mariadb-server
 
 COPY wp.sh .
-
+COPY www.conf /etc/php/7.3/fpm/pool.d/www.conf
 RUN chmod +x wp.sh
-
-CMD ["bash", "wp.sh"]
+ENTRYPOINT [ "bash", "wp.sh"]
+CMD ["php-fpm7.3", "-F"]

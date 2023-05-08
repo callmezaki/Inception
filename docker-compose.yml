@@ -8,7 +8,7 @@ services:
         ports:
             - "3306:3306"
         volumes:
-            - my-volume:/var
+            - mdb-volume:/var/lib/mysql
         networks:
             - my-network
         restart: always
@@ -21,7 +21,7 @@ services:
         ports:
             - "9000:9000"
         volumes:
-            - my-volume:/var
+            - my-volume:/var/www/html
         depends_on:
             - nginx
             - mariadb
@@ -37,13 +37,14 @@ services:
         ports:
             - "443:443"
         volumes:
-            - my-volume:/var
+            - my-volume:/var/www/html
         networks:
             - my-network
         restart: always
 
 volumes:
     my-volume:
+    mdb-volume:
 
 networks:
     my-network:
