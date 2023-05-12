@@ -41,6 +41,29 @@ services:
         networks:
             - my-network
         restart: always
+    
+    adminer:
+        build: ./adminer
+        image: adminer
+        container_name: adminer
+        ports:
+            - "80:80"
+        networks:
+            - my-network
+        restart: on-failure
+
+    cAdviser:
+        build: ./cadviser
+        image: cadvisor
+        container_name: cadvisor
+        restart: always
+        ports:
+        - 8080:8080
+        volumes:
+        - /:/rootfs:ro
+        - /var/run:/var/run:rw
+        - /sys:/sys:ro
+        - /var/lib/docker/:/var/lib/docker:ro
 
 volumes:
     my-volume:
