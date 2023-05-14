@@ -8,9 +8,12 @@ mkdir -p /run/php
 mkdir -p /var/www/html
 cd /var/www/html
 
-wp core download --allow-root --insecure 
-wp config create --dbname=zack --dbuser=zait-sli --dbpass=12345 --dbhost=mariadb --allow-root
-wp core install --url=127.0.0.1 --title=Inception --admin_user=superzack --admin_email=zait-sli@student.1337.ma --skip-email --allow-root
-wp user create zack zakariae.1234@gmail.com --role=author --user_pass=01234 --allow-root
+if  [ ! -f "/var/www/html/wp-config.php" ]; then
+
+	wp core download --allow-root --insecure 
+	wp config create --dbname=zack --dbuser=zait-sli --dbpass=12345 --dbhost=mariadb --allow-root
+	wp core install --url=127.0.0.1 --title=Inception --admin_user=superzack --admin_password=zack12345  --admin_email=zait-sli@student.1337.ma --skip-email --allow-root
+	wp user create zack zakariae.1234@gmail.com --role=author --user_pass=01234 --allow-root
+fi
 
 exec "$@"

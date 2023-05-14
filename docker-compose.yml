@@ -66,8 +66,16 @@ services:
         - /var/lib/docker/:/var/lib/docker:ro
 
 volumes:
-    my-volume:
-    mdb-volume:
+  mdb-volume:
+    driver_opts:
+      type: 'none'
+      o: bind
+      device: /home/kali/volumes/db
+  my-volume:
+    driver_opts:
+      type: 'none'
+      o: bind
+      device: /home/kali/volumes/vl
 
 networks:
     my-network:

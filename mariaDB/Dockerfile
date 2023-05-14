@@ -4,4 +4,6 @@ RUN apt-get update -y; apt-get install mariadb-server -y;
 
 COPY mariadb.sh .
 
-CMD ["bash", "mariadb.sh"]
+ENTRYPOINT  ["sh", "mariadb.sh"]
+
+CMD ["mysqld"]

@@ -1,16 +1,18 @@
 #!/bin/bash
 
-sed -i "s/127.0.0.1/0.0.0.0/g" /etc/mysql/mariadb.conf.d/50-server.cnf
+ sed -i "s/127.0.0.1/0.0.0.0/g" /etc/mysql/mariadb.conf.d/50-server.cnf
+service mysql start
 
 if [ ! -d "/var/lib/mysql/zack" ]; then
 
-    service mysql start
+ 
     mysql -u root -e "create database zack;"
     mysql -u root -e "create user 'zait-sli' identified by '12345';"
     mysql -u root -e "grant all privileges on zack.* to 'zait-sli';"
     mysql -u root -e "alter user 'root'@'localhost' identified by '0000';"
-    kill $(cat /var/run/mysqld/mysqld.pid)
+ 
 fi
 
+kill $(cat /var/run/mysqld/mysqld.pid)
 
-mysqld
+exec "$@"
