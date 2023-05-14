@@ -11,5 +11,4 @@ COPY root/index.html /var/www/html/index.html
  COPY conf/nginx.conf /etc/nginx/sites-available/default
 #  COPY conf/nginx.conf /etc/nginx/nginx.conf
 
-RUN ls /var/log/nginx; echo "\n-----------------------------"
 CMD ["nginx", "-g", "daemon off;"]

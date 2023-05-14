@@ -29,7 +29,6 @@ services:
             - my-network
         restart: always
 
-    
     nginx:
         build: ./nginx
         image: nginx
@@ -41,7 +40,19 @@ services:
         networks:
             - my-network
         restart: always
-    
+
+    website:
+        build: ./website
+        image: website
+        container_name: website
+        ports:
+            - "1337:1337"
+        volumes:
+            - web-volume:/var/www/html
+        networks:
+            - my-network
+        restart: always
+
     adminer:
         build: ./adminer
         image: adminer
@@ -76,6 +87,10 @@ volumes:
       type: 'none'
       o: bind
       device: /home/kali/volumes/vl
-
+  web-volume:
+    driver_opts:
+      type: 'none'
+      o: bind
+      device: /home/kali/volumes/website
 networks:
     my-network:
