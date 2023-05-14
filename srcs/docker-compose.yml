@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
     mariadb:
-        build: ./mariaDB
+        build: ./requirements/mariaDB
         image: mariadb
         container_name: mariadb
         ports:
@@ -15,7 +15,7 @@ services:
 
 
     wordpress:
-        build: ./wordpress
+        build: ./requirements/wordpress
         image: wordpress
         container_name: wordpress
         ports:
@@ -30,7 +30,7 @@ services:
         restart: always
 
     nginx:
-        build: ./nginx
+        build: ./requirements/nginx
         image: nginx
         container_name: nginx
         ports:
@@ -42,7 +42,7 @@ services:
         restart: always
 
     website:
-        build: ./website
+        build: ./requirements/bonus/website
         image: website
         container_name: website
         ports:
@@ -54,7 +54,7 @@ services:
         restart: always
 
     adminer:
-        build: ./adminer
+        build: ./requirements/bonus/adminer
         image: adminer
         container_name: adminer
         ports:
@@ -64,7 +64,7 @@ services:
         restart: on-failure
 
     cAdviser:
-        build: ./cadvisor
+        build: ./requirements/bonus/cadvisor
         image: cadvisor
         container_name: cadvisor
         restart: always
