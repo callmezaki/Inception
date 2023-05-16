@@ -5,10 +5,6 @@ RUN apt-get update -y ; apt-get install nginx -y ; apt-get install openssl -y ;\
 RUN mkdir -p /var/www/html
 
 
-COPY root/index.html /var/www/html/index.html
-
-
- COPY conf/nginx.conf /etc/nginx/sites-available/default
-#  COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY conf/nginx.conf /etc/nginx/sites-available/default
 
 CMD ["nginx", "-g", "daemon off;"]
