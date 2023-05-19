@@ -16,4 +16,5 @@ if  [ ! -f "/var/www/html/wp-config.php" ]; then
 	wp user create $WP_USER $WP_USER_EMAIL --role=author --user_pass=$WP_USER_PASSWORD --allow-root
 fi
 
+
 exec "$@"

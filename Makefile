@@ -8,13 +8,13 @@ DOCKER_COMPOSE_FILE := ./srcs/docker-compose.yml
 .PHONY: build up down start stop restart logs ps
 
 # Build the Docker Compose services
-build:
-	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) build
 
 # Start the Docker Compose services
-up:
+up: build
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) up -d
 
+build:
+	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) build
 # Stop the Docker Compose services
 down:
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) down
@@ -38,3 +38,6 @@ logs:
 # View the status of the Docker Compose services
 ps:
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) ps
+vl:
+	rm -rf ~/Desktop/volumes/db/*
+	rm -rf ~/Desktop/volumes/vl/*
