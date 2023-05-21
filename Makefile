@@ -22,3 +22,8 @@ ps:
 vl:
 	rm -rf ~/data/db/*
 	rm -rf ~/data/vl/*
+	rm -rf ~/data/website/*
+data:
+	mkdir -p ~/data/website
+	mkdir ~/data/db
+	mkdir ~/data/vl
