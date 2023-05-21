@@ -6,7 +6,7 @@ up: build
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d
 
 build:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) build
+	docker-compose -f $(DOCKER_COMPOSE_FILE) build  
 
 down:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) down -v
@@ -19,6 +19,8 @@ logs:
 
 ps:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) ps
+prune:
+	docker system prune --all 
 vl:
 	rm -rf ~/data/db/*
 	rm -rf ~/data/vl/*

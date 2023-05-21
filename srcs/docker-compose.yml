@@ -8,7 +8,7 @@ services:
         env_file:
             - .env
         ports:
-            - "3306:3306"
+            - "3306"
         volumes:
             - mdb-volume:/var/lib/mysql
         networks:
@@ -23,7 +23,7 @@ services:
         env_file:
             - .env
         ports:
-            - "9000:9000"
+            - "9000"
         volumes:
             - my-volume:/var/www/html
         depends_on:
