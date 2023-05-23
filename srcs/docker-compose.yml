@@ -85,16 +85,16 @@ volumes:
     driver_opts:
       type: 'none'
       o: bind
-      device: /Users/zait-sli/data/db
+      device: /home/zait-sli/data/db
   my-volume:
     driver_opts:
       type: 'none'
       o: bind
-      device: /Users/zait-sli/data/vl
+      device: /home/zait-sli/data/vl
   web-volume:
     driver_opts:
       type: 'none'
       o: bind
-      device: /Users/zait-sli/data/website
+      device: /home/zait-sli/data/website
 networks:
     my-network:
